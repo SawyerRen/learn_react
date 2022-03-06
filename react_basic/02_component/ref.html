@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/javascript" src="../js/prop-types.js"></script>
+
+<script type="text/babel">
+    // class Demo extends React.Component {
+    //     render() {
+    //         return (
+    //             <div>
+    //                 <label>
+    //                     <input ref="input1" type="text" placeholder="click button"/>
+    //                 </label>
+    //                 <button ref="btn1" onClick={this.showData}>click me</button>
+    //                 <label>
+    //                     <input onBlur={this.showData2} ref="input2" type="text" placeholder="move mouse away"/>
+    //                 </label>
+    //             </div>
+    //         )
+    //     }
+    //
+    //     showData = () => {
+    //         const {input1} = this.refs;
+    //         alert(input1.value)
+    //     }
+    //     showData2 = () => {
+    //         const {input2} = this.refs;
+    //         alert(input2.value)
+    //     }
+    // }
+    //
+    // ReactDOM.render(<Demo/>, document.getElementById("test"));
+
+    // class Demo extends React.Component {
+    //     render() {
+    //         return (
+    //             <div>
+    //                 <label>
+    //                     <input ref={this.saveInput} type="text" placeholder="click button"/>
+    //                 </label>
+    //                 <button onClick={this.showData}>click me</button>
+    //                 <label>
+    //                     <input onBlur={this.showData2} ref={curNode =>
+    //                         this.input2 = curNode
+    //                     } type="text" placeholder="move mouse away"/>
+    //                 </label>
+    //             </div>
+    //         )
+    //     }
+    //
+    //     showData = () => {
+    //         const {input1} = this;
+    //         alert(input1.value);
+    //     }
+    //     showData2 = () => {
+    //         const {input2} = this;
+    //         alert(input2.value);
+    //     }
+    //
+    //     saveInput = (curNode) => {
+    //         this.input1 = curNode;
+    //     }
+    // }
+    //
+    // ReactDOM.render(<Demo/>, document.getElementById("test"));
+    class Demo extends React.Component {
+        myRef = React.createRef();
+        render() {
+            return (
+                <div>
+                    <label>
+                        <input ref={this.myRef} type="text" placeholder="click button"/>
+                    </label>
+                    <button onClick={this.showData}>click me</button>
+                </div>
+            )
+        }
+
+        showData = () => {
+            alert(this.myRef.current.value);
+        }
+    }
+
+    ReactDOM.render(<Demo/>, document.getElementById("test"));
+</script>
+</body>
+</html>
